@@ -48,6 +48,7 @@ describe  "Candidate Stories" do
       allow(candidate).to receive(:applied?).and_return true
     end
     it 'does not allow cv to be sent' do
+
       expect {candidate.send(cv)}.to raise_error 'Cannot send cv. You already applied to this employer '
     end
   end

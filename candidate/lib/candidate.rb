@@ -23,5 +23,7 @@ class Candidate
   def applied?
     potential_employers = ['BBC', 'New Employer']
     @employers.include?(potential_employers.sample)
+    puts "xxxx x xx #{potential_employers.inspect}"
   end
+
 end
