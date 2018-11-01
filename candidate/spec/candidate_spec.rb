@@ -6,11 +6,22 @@ describe Candidate do
 
   describe "#write (cv)" do
     # it {is_expected.to respond_to( :write).with(1).argument }
-
-    it 'tells a candidate to write a cv' do
-
-      expect(candidate).to respond_to(:write).with(1).argument
+    context 'when not applied' do
+      it 'tells a candidate to write a cv' do
+        expect(candidate).to respond_to(:write).with(1).argument
+      end
     end
+
+    context 'when applied' do
+      before do
+        allow(candidate).to receive(:applied?).and_return true
+      end
+
+      it 'raises an error' do
+        expect { candidate.write(cv)}.to  raise_error 'Cannot send cv. You already applied to this employer '
+      end
+    end
+
   end
 
   describe "#send (cv)" do
@@ -38,5 +49,7 @@ describe Candidate do
         expect {candidate.send(cv)}.to raise_error 'Cannot send cv. You already applied to this employer '
       end
     end
+
+
   end
 end

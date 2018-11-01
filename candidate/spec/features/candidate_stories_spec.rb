@@ -51,5 +51,10 @@ describe  "Candidate Stories" do
 
       expect {candidate.send(cv)}.to raise_error 'Cannot send cv. You already applied to this employer '
     end
+
+    it 'does not allow cv to be written' do
+
+      expect {candidate.write(cv)}.to raise_error 'Cannot send cv. You already applied to this employer '
+    end
   end
 end

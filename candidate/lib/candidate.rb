@@ -6,6 +6,7 @@ class Candidate
   end
 
   def write cv
+    raise 'Cannot send cv. You already applied to this employer ' if applied?
   end
 
   def send cv
@@ -23,7 +24,7 @@ class Candidate
   def applied?
     potential_employers = ['BBC', 'New Employer']
     @employers.include?(potential_employers.sample)
-    puts "xxxx x xx #{potential_employers.inspect}"
+    # puts "xxxx x xx #{potential_employers.sample.inspect}"
   end
 
 end
