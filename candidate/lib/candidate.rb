@@ -1,8 +1,10 @@
+require 'employer_reporter'
+
 class Candidate
-  def initialize target
+  def initialize target, employer_reporter
     @target = target
     @cvs = []
-    @employers = ["Sky", "BBC", "Skyscanner", "On The Beach"]
+    @employer_reporter = employer_reporter
   end
 
   def write cv
@@ -22,9 +24,7 @@ class Candidate
     end
 
   def applied?
-    potential_employers = ['BBC', 'New Employer']
-    @employers.include?(potential_employers.sample)
-    # puts "xxxx x xx #{potential_employers.sample.inspect}"
+     @employer_reporter.applied?
   end
 
 end

@@ -1,10 +1,12 @@
 describe  "Candidate Stories" do
-  let(:candidate) {Candidate.new(5)}
+  let(:employer_reporter) {EmployerReporter.new}
+  let(:candidate) {Candidate.new(5, employer_reporter)}
   let(:cv) {Cv.new}
+
 
   context 'when not applied' do
     before do
-      allow(candidate).to receive(:applied?).and_return false
+      allow(employer_reporter).to receive(:applied?).and_return false
     end
     # As a candidate
     # So candidate can write a cv to find a job
@@ -28,7 +30,7 @@ describe  "Candidate Stories" do
     # Candidate want to prevent sending cv when target reached
 
     before do
-      allow(candidate).to receive(:applied?).and_return false
+      allow(employer_reporter).to receive(:applied?).and_return false
     end
 
     it 'does not allow cv s to be sent' do
@@ -40,12 +42,9 @@ describe  "Candidate Stories" do
   end
 
   context 'when applied' do
-    # As a candidate
-    # So candidate can avoid sending cv multiple time to the same employer
-    # Candidate want to prevent sending cv s when already sent to the same employer
 
     before do
-      allow(candidate).to receive(:applied?).and_return true
+      allow(employer_reporter).to receive(:applied?).and_return true
     end
     it 'does not allow cv to be sent' do
 
